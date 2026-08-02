@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "docx-formula-guard"
+version = "0.1.0"
+description = "A read-only checker for DOCX and LaTeX equation compatibility risks."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Andrew4747" }
+]
+keywords = ["docx", "latex", "mathtype", "equations", "academic-writing"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Text Processing :: Markup"
+]
+
+[project.scripts]
+formula-guard = "docx_formula_guard.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Andrew4747/docx-formula-guard"
+Issues = "https://github.com/Andrew4747/docx-formula-guard/issues"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+docx_formula_guard = ["default_rules.json"]

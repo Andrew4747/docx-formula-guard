@@ -1,0 +1,36 @@
+{
+  "profile": "word-native-equation-to-mathtype",
+  "description": "Precautionary patterns for a Word native equation to MathType conversion workflow. Warnings are not universal LaTeX errors.",
+  "rules": [
+    {
+      "code": "LATEX_ENVIRONMENT",
+      "pattern": "\\\\(?:begin|end)\\s*\\{",
+      "severity": "warning",
+      "message": "Multi-line LaTeX environments may not survive this conversion workflow; split the expression and verify it manually."
+    },
+    {
+      "code": "LATEX_SPACING_COMMAND",
+      "pattern": "\\\\(?:quad|qquad|hspace)\\b",
+      "severity": "warning",
+      "message": "Explicit spacing commands can become placeholders during conversion; prefer ordinary separators where mathematically appropriate."
+    },
+    {
+      "code": "LATEX_COMPLEX_LAYOUT",
+      "pattern": "\\\\(?:below|substack|bigcup)\\b",
+      "severity": "warning",
+      "message": "This layout command has caused compatibility problems in some Word-to-MathType workflows; verify the converted formula."
+    },
+    {
+      "code": "LATEX_AUTO_DELIMITER",
+      "pattern": "\\\\(?:left|right)\\b",
+      "severity": "info",
+      "message": "Automatic delimiter sizing is accepted by LaTeX but should be conversion-tested in Word and MathType."
+    },
+    {
+      "code": "LATEX_TEXT_OPERATOR",
+      "pattern": "\\\\(?:operatorname|text)\\s*\\{",
+      "severity": "info",
+      "message": "Text-oriented formula commands can be interpreted differently by equation converters; verify the result."
+    }
+  ]
+}
